@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-readex bg-[#09111B];
+  }
+  .container {
+    @apply px-5 md:px-8;
+  }
+}
