@@ -1,5 +1,10 @@
 <template>
-  <router-view></router-view>
+   <div class="overflow-hidden">
+      <Navbar />
+      <router-view />
+   </div>
 </template>
 
-<script></script>
+<script setup>
+import Navbar from './components/Navbar.vue'
+</script>

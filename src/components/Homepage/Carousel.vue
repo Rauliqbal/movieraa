@@ -1,25 +1,57 @@
-<script setup>
+<script>
 import axios from 'axios'
-import { onMounted, ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import { Pagination } from 'swiper'
 
-const movies = ref([])
-async function getMovieData() {
-   try {
-      const res = await axios.get(
-         'https://api.themoviedb.org/3/movie/upcoming?api_key=6c5ae941b98ff4368470dfbe28aa0758&language=en-US&page=1'
-      )
-      movies.value = res.data.results
-   } catch (error) {
-      console.error(error)
-   }
+import { Autoplay, Pagination } from 'swiper'
+
+export default {
+   components: {
+      Swiper,
+      SwiperSlide,
+   },
+
+   data() {
+      return {
+         movies: [],
+         modules: [Autoplay, Pagination],
+      }
+   },
+
+   methods: {
+      async getMovieData() {
+         const res = await axios.get(
+            'https://api.themoviedb.org/3/movie/upcoming?api_key=6c5ae941b98ff4368470dfbe28aa0758&language=en-US&page=1'
+         )
+
+         this.movies = res.data.results
+      },
+   },
+
+   mounted() {
+      this.getMovieData()
+   },
 }
-onMounted(() => {
-   getMovieData()
-})
+
+// const movies = ref([])
+// async function getMovieData() {
+//    try {
+//       const res = await axios.get(
+//          'https://api.themoviedb.org/3/movie/upcoming?api_key=6c5ae941b98ff4368470dfbe28aa0758&language=en-US&page=1'
+//       )
+//       movies.value = res.data.results
+//    } catch (error) {
+//       console.error(error)
+//    }
+// }
+// onMounted(() => {
+//    getMovieData()
+// })
+// :autoplay="{
+//          delay: 3500,
+//          disableOnInteraction: false,
+//       }"
 
 modules: [Pagination]
 </script>
@@ -30,20 +62,22 @@ modules: [Pagination]
          clickable: true,
       }"
       :modules="modules"
-      class="mySwiper"
+      class="mySwiper pb-10"
    >
       <swiper-slide v-for="movie in movies.slice(0, 4)">
-         <div class="overflow-hidden relative group rounded-xl">
-            <img
-               class="w-full h-[530px] object-cover object-center rounded-xl group-hover:scale-105 duration-700"
-               :src="
-                  'https://image.tmdb.org/t/p/original' + movie.backdrop_path
-               "
-               alt=""
-            />
-            <div class="bg-black/40 absolute inset-0"></div>
+         <div class="overflow-hidden group rounded-xl">
+            <div class="relative">
+               <img
+                  class="w-full h-[225px] md:h-[530px] object-cover object-center rounded-xl group-hover:scale-105 duration-700"
+                  :src="
+                     'https://image.tmdb.org/t/p/original' + movie.backdrop_path
+                  "
+                  alt=""
+               />
+               <div class="bg-black/40 absolute inset-0"></div>
+            </div>
             <div
-               class="absolute left-0 top-0 p-10 z-10 flex flex-col justify-end h-full"
+               class="absolute inset-x-0 top-0 p-4 md:p-10 z-10 flex flex-col justify-end h-full"
             >
                <div>
                   <span
@@ -51,21 +85,23 @@ modules: [Pagination]
                      >{{ movie.vote_average }}</span
                   >
                   <h1
-                     class="text-white text-5xl font-bold leading-tight max-w-md mt-2"
+                     class="text-white text-2xl md:text-5xl font-bold leading-tight max-w-md mt-2"
                   >
                      {{ movie.title }}
                   </h1>
-                  <h4 class="text-lg font-medium text-white mt-4">
+                  <h4 class="text-sm md:text-lg font-medium text-white mt-4">
                      Release {{ movie.release_date }}
                   </h4>
 
-                  <button class="flex items-center gap-2 mt-8">
+                  <button
+                     class="absolute md:relative bottom-[-22px] md:bottom-0 right-4 md:right-0 md:flex items-center gap-2 mt-8"
+                  >
                      <div
-                        class="inline-flex justify-center items-center w-10 h-10 text-white bg-red-600 rounded-full"
+                        class="inline-flex justify-center items-center w-12 h-12 text-white bg-red-600 rounded-full"
                      >
                         <i class="ai-triangle-right text-3xl"></i>
                      </div>
-                     <p class="text-white">Watch the trailer</p>
+                     <p class="text-white hidden md:block">Watch the trailer</p>
                   </button>
                </div>
             </div>
@@ -73,3 +109,15 @@ modules: [Pagination]
       </swiper-slide>
    </swiper>
 </template>
+<style>
+.swiper-pagination-bullet {
+   background: #e61c1c !important;
+   width: 12px !important;
+   border-radius: 4px !important;
+}
+.swiper-pagination-bullet-active {
+   background: #d12323 !important;
+   width: 18px !important;
+   border-radius: 4px !important;
+}
+</style>

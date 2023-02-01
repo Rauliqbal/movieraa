@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply font-readex bg-[#09111B];
-  }
-  .container {
-    @apply px-5 md:px-8;
-  }
+   body {
+      @apply font-readex bg-[#121a24];
+   }
+   .container {
+      @apply px-5 md:px-8;
+   }
 }

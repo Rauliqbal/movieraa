@@ -2,7 +2,7 @@
 defineProps({
    id: Number,
    poster_path: String,
-   vote_average: String,
+   vote_average: Number,
    title: String,
 })
 
