@@ -1,5 +1,5 @@
 <template>
-   <div class="overflow-hidden">
+   <div class="overflow-hidden pb-20">
       <Navbar />
       <router-view />
    </div>

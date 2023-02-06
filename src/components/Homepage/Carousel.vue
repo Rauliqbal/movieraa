@@ -62,13 +62,13 @@ modules: [Pagination]
          clickable: true,
       }"
       :modules="modules"
-      class="mySwiper pb-10"
+      class="mySwiper pb-14"
    >
-      <swiper-slide v-for="movie in movies.slice(0, 4)">
+      <swiper-slide v-for="movie in movies.slice(0, 4)" :key="movie.id">
          <div class="overflow-hidden group rounded-xl">
             <div class="relative">
                <img
-                  class="w-full h-[225px] md:h-[530px] object-cover object-center rounded-xl group-hover:scale-105 duration-700"
+                  class="w-full h-[225px] md:h-[500px] object-cover object-center rounded-xl group-hover:scale-105 duration-700"
                   :src="
                      'https://image.tmdb.org/t/p/original' + movie.backdrop_path
                   "
