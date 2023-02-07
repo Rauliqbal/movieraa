@@ -90,7 +90,14 @@ modules: [Pagination]
                      {{ movie.title }}
                   </h1>
                   <h4 class="text-sm md:text-lg font-medium text-white mt-4">
-                     Release {{ movie.release_date }}
+                     Release
+                     {{
+                        new Date(movie.release_date).toLocaleString('en-us', {
+                           month: 'long',
+                           day: 'numeric',
+                           year: 'numeric',
+                        })
+                     }}
                   </h4>
 
                   <button

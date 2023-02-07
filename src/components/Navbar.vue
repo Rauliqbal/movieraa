@@ -2,7 +2,7 @@
 <template>
    <div>
       <div
-         class="container w-full flex items-center gap-4 top-4 absolute md:invisible visible"
+         class="container w-full flex items-center gap-4 top-4 inset-x-0 absolute lg:invisible visible"
       >
          <form class="w-full relative ml-auto">
             <input
@@ -21,12 +21,12 @@
          </form>
          <img class="rounded-full w-12" src="../assets/avatar.png" alt="" />
       </div>
-      <nav class="fixed md:relative bottom-2 inset-x-4 z-10">
+      <nav class="fixed lg:relative bottom-2 inset-x-4 z-10">
          <div
-            class="container py-4 md:py-8 px-5 bg-slate-700/60 border-2 md:border-none border-slate-700 backdrop-blur-sm md:bg-transparent md:flex rounded-xl"
+            class="container py-4 md:py-8 px-5 bg-slate-700/60 border-2 lg:border-none border-slate-700 backdrop-blur-sm lg:bg-transparent md:flex rounded-xl"
          >
-            <div class="w-full md:flex items-center gap-20">
-               <h1 class="text-white font-bold text-2xl hidden md:block">
+            <div class="w-full lg:flex items-center gap-20">
+               <h1 class="text-white font-bold text-2xl hidden lg:block">
                   MOVIE<span class="text-[#d13232]">RAA</span>
                </h1>
 
@@ -35,37 +35,35 @@
                      to="/"
                      class="text-white hover:text-red-500 transition-all duration-300"
                   >
-                     <span class="hidden md:block">Home</span>
-                     <i class="md:hidden text-xl ai-home"></i>
+                     <span class="hidden lg:block">Home</span>
+                     <i class="lg:hidden text-xl ai-home"></i>
                   </RouterLink>
                   <a
                      href="#"
                      class="text-white hover:text-red-500 transition-all duration-300"
                   >
-                     <span class="hidden md:block">Movies</span>
+                     <span class="hidden lg:block">Movies</span>
 
-                     <i class="md:hidden text-xl ai-video"></i
+                     <i class="lg:hidden text-xl ai-video"></i
                   ></a>
                   <a
                      href="#"
                      class="text-white hover:text-red-500 transition-all duration-300"
                   >
-                     <span class="hidden md:block">Trending</span>
+                     <span class="hidden lg:block">Trending</span>
 
-                     <i class="md:hidden text-xl ai-fire"></i>
+                     <i class="lg:hidden text-xl ai-fire"></i>
                   </a>
                   <a
                      href="#"
                      class="text-white hover:text-red-500 transition-all duration-300"
                   >
-                     <span class="hidden md:block">TV Show</span>
-                     <i class="md:hidden text-xl ai-airplay-video"></i
+                     <span class="hidden lg:block">TV Show</span>
+                     <i class="lg:hidden text-xl ai-airplay-video"></i
                   ></a>
                </div>
 
-               <div
-                  class="flex items-center gap-4 invisible md:visible ml-auto"
-               >
+               <div class="hidden lg:flex items-center gap-4 ml-auto">
                   <form class="relative">
                      <input
                         class="w-full pl-4 pr-10 py-3 bg-slate-700 outline-none rounded-full placeholder:text-slate-400"

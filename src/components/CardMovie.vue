@@ -39,11 +39,11 @@ defineProps({
                   >{{ vote_average }}</span
                >
             </div>
-            <h1
+            <h2
                class="text-white font-semibold text-sm md:text-lg transition ease-out duration-400 text-start"
             >
                {{ title }}
-            </h1>
+            </h2>
          </div>
       </div>
    </router-link>
