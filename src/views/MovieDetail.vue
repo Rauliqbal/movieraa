@@ -3,6 +3,9 @@ import axios from 'axios'
 import { useRoute } from 'vue-router'
 import { onMounted, ref, computed } from 'vue'
 import Thumbnail from '../components/Detailpage/Thumbnail.vue'
+import Cast from '../components/Detailpage/Cast.vue'
+import Navbar from '../components/Navbar.vue'
+import Recommendation from '../components/Detailpage/Recommendation.vue'
 
 const route = useRoute()
 const movie = ref([])
@@ -19,6 +22,7 @@ async function getMoviesData() {
 }
 onMounted(() => {
    getMoviesData()
+   window.scrollTo(0, 0)
 })
 
 const genreMovie = computed(() => {
@@ -27,7 +31,18 @@ const genreMovie = computed(() => {
 })
 </script>
 <template>
-   <div>
+   <main>
+      <Navbar class="hidden lg:block" />
+      <header class="absolute inset-x-0 py-6 lg:hidden">
+         <div class="container">
+            <router-link
+               to="/"
+               class="flex items-center justify-center w-8 h-8 text-2xl text-white focus:bg-slate-600 rounded-lg transition-all duration-300 ease-out"
+            >
+               <i class="ai-chevron-left"></i>
+            </router-link>
+         </div>
+      </header>
       <Thumbnail class="pt-20 lg:pt-0" :thumbnail="movie.backdrop_path" />
       <div class="container">
          <div
@@ -35,7 +50,9 @@ const genreMovie = computed(() => {
          >
             <div class="hidden lg:block">
                <img
-                  :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
+                  :src="
+                     'https://image.tmdb.org/t/p/original' + movie.poster_path
+                  "
                   alt=""
                   class="rounded-xl"
                />
@@ -51,10 +68,11 @@ const genreMovie = computed(() => {
                   {{ movie.title }}
                </h2>
 
+               <p class="text-sm text-slate-500 mt-2">
+                  {{ movie.runtime }} Minutes.
+               </p>
+
                <div class="flex flex-col md:flex-row mt-2 gap-1">
-                  <p class="text-sm text-slate-500">
-                     {{ movie.runtime }} Minutes.
-                  </p>
                   <p class="text-sm text-slate-500">
                      {{
                         new Date(movie.release_date).toLocaleString('en-us', {
@@ -76,14 +94,18 @@ const genreMovie = computed(() => {
                </div>
 
                <p
-                  class="md:text-lg leading-relaxed tracking-wide text-slate-300 mt-4 md:mt-8"
+                  class="md:text-lg leading-relaxed tracking-wide text-slate-300 mt-4"
                >
                   {{ movie.overview }}
                </p>
+
+               <Cast class="mt-4" />
             </div>
          </div>
+
+         <Recommendation />
       </div>
-   </div>
+   </main>
 </template>
 
 <style>

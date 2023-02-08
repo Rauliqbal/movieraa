@@ -61,12 +61,19 @@ modules: [Pagination]
       :pagination="{
          clickable: true,
       }"
+      :autoplay="{
+         delay: 2500,
+         disableOnInteraction: false,
+      }"
       :modules="modules"
-      class="mySwiper pb-14"
+      class="mySwiper pb-14 md:pb-0"
    >
-      <swiper-slide v-for="movie in movies.slice(0, 4)" :key="movie.id">
-         <div class="overflow-hidden group rounded-xl">
-            <div class="relative">
+      <swiper-slide v-for="movie in movies.slice(0, 7)" :key="movie.id">
+         <router-link
+            :to="'/movie/' + movie.id"
+            class="overflow-hidden group rounded-xl"
+         >
+            <div class="relative overflow-hidden rounded-xl">
                <img
                   class="w-full h-[225px] md:h-[500px] object-cover object-center rounded-xl group-hover:scale-105 duration-700"
                   :src="
@@ -112,19 +119,21 @@ modules: [Pagination]
                   </button>
                </div>
             </div>
-         </div>
+         </router-link>
       </swiper-slide>
    </swiper>
 </template>
 <style>
 .swiper-pagination-bullet {
    background: #e61c1c !important;
-   width: 12px !important;
+   width: 6px !important;
+   height: 6px !important;
    border-radius: 4px !important;
 }
 .swiper-pagination-bullet-active {
    background: #d12323 !important;
    width: 18px !important;
+   height: 6px !important;
    border-radius: 4px !important;
 }
 </style>

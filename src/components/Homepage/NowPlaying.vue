@@ -4,7 +4,6 @@ import { onMounted, ref } from 'vue'
 import MovieCard from '../CardMovie.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
-import 'swiper/css/pagination'
 
 const movies = ref([])
 async function getMovieData() {
@@ -38,7 +37,7 @@ onMounted(() => {
             1024: { slidesPerView: 5 },
          }"
       >
-         <swiper-slide v-for="movie in movies">
+         <swiper-slide v-for="movie in movies" :key="movie.id">
             <MovieCard
                :id="movie.id"
                :poster_path="movie.poster_path"
