@@ -1,24 +1,13 @@
-<script setup></script>
+<script setup>
+import Search from './Search.vue';
+
+</script>
 <template>
    <div>
       <div
          class="container w-full flex items-center gap-4 top-4 inset-x-0 absolute lg:invisible visible"
       >
-         <form class="w-full relative ml-auto">
-            <input
-               class="w-full pl-4 pr-10 py-3 bg-slate-700 outline-none rounded-full placeholder:text-sm placeholder:text-slate-400"
-               type="text"
-               name="search"
-               id=""
-               placeholder="Search Movie or TV show "
-            />
-            <button
-               class="absolute top-[10px] right-4 text-slate-400"
-               type="submit"
-            >
-               <i class="ai-search text-xl"></i>
-            </button>
-         </form>
+         <Search/>
          <img class="rounded-full w-12" src="../assets/avatar.png" alt="" />
       </div>
       <nav class="fixed lg:relative bottom-2 inset-x-4 z-10">
@@ -64,21 +53,7 @@
                </div>
 
                <div class="hidden lg:flex items-center gap-4 ml-auto">
-                  <form class="relative">
-                     <input
-                        class="w-full pl-4 pr-10 py-3 bg-slate-700 outline-none rounded-full placeholder:text-slate-400"
-                        type="text"
-                        name="search"
-                        id=""
-                        placeholder="Search Movie or TV show "
-                     />
-                     <button
-                        class="absolute top-[10px] right-4 text-slate-400"
-                        type="submit"
-                     >
-                        <i class="ai-search text-xl"></i>
-                     </button>
-                  </form>
+                  <Search/>
                   <img
                      class="rounded-full w-12"
                      src="../assets/avatar.png"
